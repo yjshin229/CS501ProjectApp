@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TaskTerriers</string>
+    <string name="title_requests">Requests</string>
+    <string name="title_services">Services</string>
+    <string name="title_messages">Messages</string>
+    <string name="title_settings">Settings</string>
+</resources>
