@@ -34,11 +34,6 @@ How we should name branches:
    2.  If there are no conflicts the person who created the PR will merge to dev. <br><br>
    ⚠️ MERGING SHOULD BE DONE BY THE PERSON WHO IMPLEMENTED THE CODE!
 
-   ❗ Prettier(a tool that checks code format) is implemented in our Github action. <br>
-   This will check your code if the code style matches out prettier config.
-   1. If prettier fails, run ```yarn prettier:write``` in your local.
-   2. Then push again to see if it passes.
-
 9. After each SPRINT I will merge ```dev``` to ```main```.
    > ⭐ Remember to pull before starting any work!!
 
