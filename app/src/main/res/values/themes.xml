@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- color you see when overscrolling recyclerView -->
+        <item name="android:colorEdgeEffect">@color/neutral_40</item>
     </style>
 </resources>

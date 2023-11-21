@@ -61,7 +61,7 @@
                     android:contentDescription="Type of Service"
                     android:textColor="@color/neutral_0"
                     app:closeIconVisible="false"
-                    app:style="@style/CustomChipStyle" />
+                    style="@style/CustomChipStyle" />
 
             </LinearLayout>
             <TextView

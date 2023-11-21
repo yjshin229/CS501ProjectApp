@@ -8,7 +8,6 @@
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Entry">
         <item name="chipBackgroundColor">@color/neutral_80</item>
         <item name="chipCornerRadius">16dp</item>
-        <!-- Customize other attributes like text appearance, padding, etc. -->
     </style>
 
 </resources>
