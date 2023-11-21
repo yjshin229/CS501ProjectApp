@@ -25,16 +25,16 @@ class RequestsFragment : Fragment() {
 
         // Example list of RequestItems
         val exampleList = listOf(
-            RequestItem("Name 1", "Date 1", "Content 1", R.drawable.ic_launcher_background), // Replace with actual data and drawable
-            RequestItem("Name 2", "Date 2", "Content 2", R.drawable.ic_launcher_background),
-            RequestItem("Name 3", "Date 3", "Content 3", R.drawable.ic_launcher_background),
-            RequestItem("Name 4", "Date 4", "Content 4", R.drawable.ic_launcher_background),
-            RequestItem("Name 5", "Date 5", "Content 5", R.drawable.ic_launcher_background),
-            RequestItem("Name 6", "Date 6", "Content 6", R.drawable.ic_launcher_background),
-            RequestItem("Name 7", "Date 7", "Content 7", R.drawable.ic_launcher_background),
-            RequestItem("Name 8", "Date 8", "Content 8", R.drawable.ic_launcher_background),
-            RequestItem("Name 9", "Date 9", "Content 9", R.drawable.ic_launcher_background),
-            RequestItem("Name 10", "Date 10", "Content 10", R.drawable.ic_launcher_background),
+            RequestItem("Name 1", "Date 1", "Content 1", "Tutoring", R.drawable.ic_launcher_background), // Replace with actual data and drawable
+            RequestItem("Name 2", "Date 2", "Content 2", "Move-in",  R.drawable.ic_launcher_background),
+            RequestItem("Name 3", "Date 3", "Content 3", "Move-in", R.drawable.ic_launcher_background),
+            RequestItem("Name 4", "Date 4", "Content 4", "General", R.drawable.ic_launcher_background),
+            RequestItem("Name 5", "Date 5", "Content 5", "General", R.drawable.ic_launcher_background),
+            RequestItem("Name 6", "Date 6", "Content 6", "Tutoring", R.drawable.ic_launcher_background),
+            RequestItem("Name 7", "Date 7", "Content 7", "Personal Care", R.drawable.ic_launcher_background),
+            RequestItem("Name 8", "Date 8", "Content 8", "Personal Care", R.drawable.ic_launcher_background),
+            RequestItem("Name 9", "Date 9", "Content 9", "Tutoring", R.drawable.ic_launcher_background),
+            RequestItem("Name 10", "Date 10", "Content 10","Tutoring",  R.drawable.ic_launcher_background),
             // Add more items...
         )
 

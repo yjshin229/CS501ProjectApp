@@ -19,6 +19,7 @@ class RequestsCardAdapter(private val items: List<RequestItem>,
                 nameTextView.text = item.name
                 dateTextView.text = item.date
                 contentTextView.text = item.content
+                reusableChip.text = item.chipString
                 // You can setup click listener for buttonKebabMenu as well
                 root.setOnClickListener { onItemClick(item) }
             }
