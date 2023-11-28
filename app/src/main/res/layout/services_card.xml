@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/servicesCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImageView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/CircularImageView"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <LinearLayout
+                app:layout_constraintLeft_toRightOf="@id/profileImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/neutral_0"
+                    android:text="Name"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/reusable_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutoring"
+                    android:contentDescription="Type of Service"
+                    android:textColor="@color/neutral_0"
+                    app:closeIconVisible="false"
+                    style="@style/CustomChipStyle" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/servicePrice"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/buttonKebabMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:textColor="@color/bu_red"
+                android:textStyle="bold"
+                android:text="$50"
+                android:layout_marginRight="10dp"/>
+            <ImageButton
+                android:id="@+id/buttonKebabMenu"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_more_vert_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/contentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:textSize="14sp"
+            android:textColor="@color/neutral_0"
+            android:text="1 sentence description fkadsj;dfkl;jds;ajf;dslfdjsaklsfkdjslslf"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <LinearLayout
+            android:id="@+id/reviewTextView"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_20"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5dp"
+                />
+
+            <TextView
+                android:id="@+id/reviewDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:text="4.9"
+                android:textColor="@color/neutral_0"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:text="@string/dot_symbol"
+                android:textColor="@color/neutral_0"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:text="22 Reviews"
+                android:textColor="@color/neutral_0"
+                android:layout_marginRight="5dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
