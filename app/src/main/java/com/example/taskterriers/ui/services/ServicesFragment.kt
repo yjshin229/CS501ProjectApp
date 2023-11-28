@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.taskterriers.databinding.FragmentRequestsBinding
 import com.example.taskterriers.databinding.FragmentServicesBinding
+import com.example.taskterriers.ui.requests.RequestsCardAdapter
 
 class ServicesFragment : Fragment() {
 
@@ -23,15 +26,21 @@ class ServicesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val servicesViewModel =
-            ViewModelProvider(this).get(ServicesViewModel::class.java)
+            ViewModelProvider(this)[ServicesViewModel::class.java]
 
         _binding = FragmentServicesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textServices
-        servicesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        binding..layoutManager = LinearLayoutManager(context)
+//        val requests =  requestsViewModel.requests
+//
+//        // Setting up the RecyclerView
+//        val adapter = RequestsCardAdapter(requests) { requestItem ->
+//            // Handle click event for each item
+//            // For example, navigate to another fragment or activity
+//        }
+//        binding.recyclerviewRequests.adapter = adapter
+
         return root
     }
 

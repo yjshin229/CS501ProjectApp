@@ -1,7 +1,5 @@
 package com.example.taskterriers.ui.requests
 
-//package com.example.taskterriers.models
-
 data class RequestItem(
     val name: String,
     val date: String,

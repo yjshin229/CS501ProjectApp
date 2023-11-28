@@ -65,6 +65,17 @@
 
             </LinearLayout>
             <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/servicePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:textColor="@color/bu_red"
+                android:textStyle="bold"
+                android:text="$"
+                android:layout_marginRight="4dp"/>
+            <TextView
                 android:id="@+id/servicePrice"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -74,22 +85,23 @@
                 android:textSize="32sp"
                 android:textColor="@color/bu_red"
                 android:textStyle="bold"
-                android:text="$50"
+                android:text="50"
                 android:layout_marginRight="10dp"/>
             <ImageButton
                 android:id="@+id/buttonKebabMenu"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/baseline_more_vert_24"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="center"
                 android:clickable="true"
                 android:focusable="true" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/contentTextView"
+            android:id="@+id/descriptionPreview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
@@ -100,7 +112,6 @@
             android:maxLines="1"/>
 
         <LinearLayout
-            android:id="@+id/reviewTextView"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,13 +143,22 @@
                 android:textColor="@color/neutral_0"
                 android:layout_marginRight="5dp"/>
             <TextView
+                android:id="@+id/numberOfReviews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="14sp"
-                android:text="22 Reviews"
+                android:text="22"
                 android:textColor="@color/neutral_0"
                 android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:text="Reviews"
+                android:textColor="@color/neutral_0"
+                />
 
         </LinearLayout>
 
