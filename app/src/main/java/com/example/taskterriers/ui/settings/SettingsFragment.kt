@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentSettingsBinding
-import com.example.taskterriers.ui.authentication.GoogleSignInActivity
+import com.example.taskterriers.GoogleSignInActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

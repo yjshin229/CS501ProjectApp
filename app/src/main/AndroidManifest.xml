@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.authentication.GoogleSignInActivity"
+            android:name=".GoogleSignInActivity"
             android:exported="true"/>
         <activity
             android:name=".MainActivity"

@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.taskterriers.databinding.ActivitySplashScreenBinding
-import com.example.taskterriers.ui.authentication.GoogleSignInActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashScreen : AppCompatActivity() {
@@ -34,7 +33,7 @@ class SplashScreen : AppCompatActivity() {
                 finish()
             },  1000)
         }else{
-            val intent: Intent = Intent(this,GoogleSignInActivity::class.java)
+            val intent: Intent = Intent(this, GoogleSignInActivity::class.java)
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(intent)
                 finish()

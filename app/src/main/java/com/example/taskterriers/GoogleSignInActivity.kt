@@ -1,4 +1,4 @@
-package com.example.taskterriers.ui.authentication
+package com.example.taskterriers
 
 import android.app.Activity
 import android.content.Intent
@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.taskterriers.MainActivity
-import com.example.taskterriers.R
 import com.example.taskterriers.databinding.ActivityGoogleSignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
