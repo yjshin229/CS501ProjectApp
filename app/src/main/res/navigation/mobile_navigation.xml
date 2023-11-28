@@ -27,4 +27,13 @@
         android:name="com.example.taskterriers.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/googleSignInFragment"
+        android:name="com.example.taskterriers.ui.authentication.GoogleSignInFragment"
+        android:label="fragment_google_sign_in"
+        tools:layout="@layout/fragment_google_sign_in" >
+        <action
+            android:id="@+id/action_googleSignInFragment_to_navigation_requests"
+            app:destination="@id/navigation_requests" />
+    </fragment>
 </navigation>
