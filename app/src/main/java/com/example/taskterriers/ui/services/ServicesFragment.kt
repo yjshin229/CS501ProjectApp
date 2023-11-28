@@ -31,15 +31,15 @@ class ServicesFragment : Fragment() {
         _binding = FragmentServicesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        binding..layoutManager = LinearLayoutManager(context)
-//        val requests =  requestsViewModel.requests
-//
-//        // Setting up the RecyclerView
-//        val adapter = RequestsCardAdapter(requests) { requestItem ->
-//            // Handle click event for each item
-//            // For example, navigate to another fragment or activity
-//        }
-//        binding.recyclerviewRequests.adapter = adapter
+        binding.recyclerViewServices.layoutManager = LinearLayoutManager(context)
+        val services =  servicesViewModel.services
+
+        // Setting up the RecyclerView
+        val adapter = ServicesCardAdapter(services) { serviceItem ->
+            // Handle click event for each item
+            // For example, navigate to another fragment or activity
+        }
+        binding.recyclerViewServices.adapter = adapter
 
         return root
     }
