@@ -32,6 +32,7 @@ class GoogleSignInActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        //default_web_client_id error is an IDE error. leave it as it is.
         val gson = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()

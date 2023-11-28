@@ -1,9 +1,10 @@
 package com.example.taskterriers
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.taskterriers.databinding.ActivityGoogleSignInBinding
+import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.taskterriers.databinding.ActivitySplashScreenBinding
 import com.example.taskterriers.ui.authentication.GoogleSignInActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -11,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
     private lateinit var auth: FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
@@ -29,12 +29,16 @@ class SplashScreen : AppCompatActivity() {
     private fun updateUI(currentUser: Boolean){
         if(currentUser){
             val intent: Intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(intent)
+                finish()
+            },  1000)
         }else{
             val intent: Intent = Intent(this,GoogleSignInActivity::class.java)
-            startActivity(intent)
-            finish()
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(intent)
+                finish()
+            }, 1000)
         }
     }
 }

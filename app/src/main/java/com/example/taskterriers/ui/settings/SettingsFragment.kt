@@ -36,6 +36,7 @@ class SettingsFragment : Fragment(){
 
         auth = FirebaseAuth.getInstance()
 
+        //default_web_client_id error is an IDE error. leave it as it is.
         val gson = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -45,6 +46,7 @@ class SettingsFragment : Fragment(){
 
         binding.signOutButton.setOnClickListener{
             googleSignInClient.signOut()
+            auth.signOut()
             startActivity(intent)
             activity?.finish()
         }
