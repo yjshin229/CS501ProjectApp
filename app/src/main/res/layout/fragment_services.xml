@@ -7,10 +7,16 @@
     tools:context=".ui.services.ServicesFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/addServiceButton"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerViewServices"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/CustomFABStyle"
+        android:src="@drawable/baseline_add_24"
+        app:fabSize="normal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
         />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.requests.RequestsFragment"
     >
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addRequestsButton"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerviewRequests"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CustomFABStyle"
+        android:src="@drawable/baseline_add_24"
+        app:fabSize="normal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewRequests"

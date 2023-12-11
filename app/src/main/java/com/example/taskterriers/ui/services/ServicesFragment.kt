@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.taskterriers.databinding.FragmentRequestsBinding
+import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentServicesBinding
-import com.example.taskterriers.ui.requests.RequestsCardAdapter
 
 class ServicesFragment : Fragment() {
 
@@ -40,6 +40,10 @@ class ServicesFragment : Fragment() {
             // For example, navigate to another fragment or activity
         }
         binding.recyclerViewServices.adapter = adapter
+
+        binding.addServiceButton.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_services_to_addService)
+        }
 
         return root
     }

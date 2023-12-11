@@ -15,7 +15,15 @@
         android:id="@+id/navigation_services"
         android:name="com.example.taskterriers.ui.services.ServicesFragment"
         android:label="@string/title_services"
-        tools:layout="@layout/fragment_services" />
+        tools:layout="@layout/fragment_services" >
+        <action
+            android:id="@+id/action_navigation_services_to_addService"
+            app:destination="@id/addService"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/slide_right"
+            app:popEnterAnim="@anim/slide_left"
+            app:popExitAnim="@anim/slide_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_messages"
@@ -27,13 +35,14 @@
         android:name="com.example.taskterriers.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
-        android:id="@+id/googleSignInFragment"
-        android:name="com.example.taskterriers.ui.authentication.GoogleSignInFragment"
-        android:label="fragment_google_sign_in"
-        tools:layout="@layout/fragment_google_sign_in" >
+        android:id="@+id/addService"
+        android:name="com.example.taskterriers.ui.services.AddServiceFragment"
+        android:label="fragment_add_service"
+        tools:layout="@layout/fragment_add_service" >
         <action
-            android:id="@+id/action_googleSignInFragment_to_navigation_requests"
-            app:destination="@id/navigation_requests" />
+            android:id="@+id/action_addService_to_navigation_services"
+            app:destination="@id/navigation_services" />
     </fragment>
 </navigation>
