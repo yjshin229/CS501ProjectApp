@@ -82,7 +82,7 @@ class GoogleSignInActivity : AppCompatActivity() {
                     googleSignInClient.signOut()
                     Toast.makeText(
                         this,
-                         account.email + "is not a bu email. Please try again",
+                         account.email + " is not a bu email. Please try again",
                         Toast.LENGTH_SHORT
                     ).show()
                 }else{
