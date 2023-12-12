@@ -1,21 +1,25 @@
 package com.example.taskterriers.ui.services
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.taskterriers.R
 import com.example.taskterriers.databinding.ServicesCardBinding
-import com.example.taskterriers.ui.services.ServiceCardItem
 
 
-class ServicesCardAdapter(private var services: List<ServiceCardItem>,
-                          private val onItemClick: (ServiceCardItem) -> Unit)
+class ServicesCardAdapter(
+    private var services: List<ServiceCardItem>,
+    private val navController: NavController
+)
     : RecyclerView.Adapter<ServicesCardAdapter.ServiceHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
     ): ServiceHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ServicesCardBinding.inflate(inflater, parent, false)
-        return ServiceHolder(binding, onItemClick)
+        return ServiceHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ServiceHolder, position: Int) {
@@ -29,16 +33,20 @@ class ServicesCardAdapter(private var services: List<ServiceCardItem>,
             binding.descriptionPreview.text = service.descriptionPreview
             binding.servicePrice.text = service.servicePrice.toString()
 //            binding.buttonKebabMenu.setOnClickListener()
-            binding.root.setOnClickListener{onItemClick(service)}
+            binding.root.setOnClickListener{
+                val actionId = R.id.action_navigation_services_to_serviceDetailFragment
+                val bundle = Bundle().apply {
+                    putString("serviceId", service.id)
+                }
+                navController.navigate(actionId, bundle)
+            }
 
         }
     }
 
     class ServiceHolder(
         val binding: ServicesCardBinding,
-        val onItemClick: (ServiceCardItem) -> Unit
     ): RecyclerView.ViewHolder(binding.root){
-
     }
 
     override fun getItemCount(): Int = services.size

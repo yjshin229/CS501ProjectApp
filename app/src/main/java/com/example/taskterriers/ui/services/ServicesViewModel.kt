@@ -30,6 +30,7 @@ class ServicesViewModel : ViewModel() {
             val tempList = mutableListOf<ServiceCardItem>()
             for(document in documents){
                 val service = ServiceCardItem(
+                    id = document.id,
                     name = document["serviceName"].toString(),
                     chipString = document["serviceType"].toString(),
                     descriptionPreview = document["serviceDescription"].toString().substring(0,100),
@@ -47,6 +48,7 @@ class ServicesViewModel : ViewModel() {
             val tempList = mutableListOf<ServiceCardItem>()
             for (document in documents) {
                 val service = ServiceCardItem(
+                    id = document.id,
                     name = document["serviceName"].toString(),
                     chipString = document["serviceType"].toString(),
                     descriptionPreview = document["serviceDescription"].toString().substring(0,100),

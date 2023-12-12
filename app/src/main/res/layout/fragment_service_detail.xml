@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.services.ServiceDetailFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.services.ServiceDetailFragment"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="5dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/userNameTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="User Name"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="20dp"
+        android:textColor="@color/bu_black"
+        />
+    <LinearLayout
+        android:id="@+id/majorLinearView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userNameTextView"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/major"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/bu_black"/>
+        <TextView
+            android:id="@+id/majorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/major_placeholder"
+            android:textColor="@color/bu_black"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/userDescriptionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/majorLinearView"
+        android:layout_marginTop="10dp"
+        android:text="@string/about"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="18dp"
+        android:textColor="@color/bu_black"
+        />
+    <TextView
+        android:id="@+id/userDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userDescriptionTitle"
+        android:layout_marginTop="10dp"
+        android:text="@string/lorem_ipsum"
+        android:scrollbars="vertical"
+        android:lines="10"
+        />
+    <TextView
+        android:id="@+id/descriptionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userDescriptionTextView"
+        android:layout_marginTop="10dp"
+        android:text="@string/service_detail_description"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="18dp"
+        android:textColor="@color/bu_black"/>
+    <TextView
+        android:id="@+id/serviceDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTitle"
+        android:layout_marginTop="10dp"
+        android:text="@string/lorem_ipsum"
+        android:scrollbars="vertical"
+        android:lines="10"
+        />
+    <TextView
+        android:id="@+id/locationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/serviceDescriptionTextView"
+        android:layout_marginTop="10dp"
+        android:text="@string/location"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="18dp"
+        android:textColor="@color/bu_black"/>
+<!--    <com.google.android.gms.maps.MapView-->
+<!--        android:id="@+id/mapView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/locationTitle"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        />-->
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/mapView"-->
+<!--        android:text="message this person"/>-->
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
