@@ -115,11 +115,13 @@ class GoogleSignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun addUserToDb(userName: String, uid: String, email: String) : Boolean{
+    private fun addUserToDb(userName: String, uid: String, email: String) {
         val newUserInfo = hashMapOf(
             "userName" to userName,
             "email" to email,
             "uid" to uid,
+            "about" to "",
+            "major" to ""
         )
 
        firestore.collection("users").document(uid).get().addOnCompleteListener {task ->
@@ -135,6 +137,16 @@ class GoogleSignInActivity : AppCompatActivity() {
                 Log.d("Firestore", "Error getting document: ", task.exception)
             }
         }
+    }
+
+    fun naviatingLogic(newUser: Boolean){
+        if(newUser){
+            val intent: Intent = Intent(this,MainActivity::class.java)
+        }else{
+            val intent: Intent = Intent(this,MainActivity::class.java)
+        }
+        startActivity(intent)
+        finish()
     }
 
 }
