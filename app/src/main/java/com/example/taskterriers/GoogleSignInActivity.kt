@@ -3,6 +3,7 @@ package com.example.taskterriers
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class GoogleSignInActivity : AppCompatActivity() {
@@ -21,6 +24,7 @@ class GoogleSignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleSignInBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    val firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +92,8 @@ class GoogleSignInActivity : AppCompatActivity() {
                 }else{
                     val intent: Intent = Intent(this,MainActivity::class.java)
                     val sharedPreferences = getSharedPreferences("User", MODE_PRIVATE)
+                    Log.d("before", "user not in db")
+                    addUserToDb(auth.currentUser?.displayName!!, auth.currentUser?.uid!!, auth.currentUser?.email!!)
                     val editor = sharedPreferences.edit()
                     editor.apply{
                         putString("username", auth.currentUser?.displayName.toString())
@@ -109,5 +115,26 @@ class GoogleSignInActivity : AppCompatActivity() {
         }
     }
 
+    private fun addUserToDb(userName: String, uid: String, email: String) : Boolean{
+        val newUserInfo = hashMapOf(
+            "userName" to userName,
+            "email" to email,
+            "uid" to uid,
+        )
+
+       firestore.collection("users").document(uid).get().addOnCompleteListener {task ->
+            if (task.isSuccessful) {
+                val document = task.result
+                if (document != null && !document.exists()) {
+                    Log.d("Firestore", "Document with uid $uid does not exist, creating new document.")
+                    firestore.collection("users").document(uid).set(newUserInfo)
+                } else {
+                    Log.d("Firestore", "Document with uid $uid already exists.")
+                }
+            } else {
+                Log.d("Firestore", "Error getting document: ", task.exception)
+            }
+        }
+    }
 
 }
