@@ -7,7 +7,7 @@ import com.example.taskterriers.databinding.ServicesCardBinding
 import com.example.taskterriers.ui.services.ServiceCardItem
 
 
-class ServicesCardAdapter(private val services: List<ServiceCardItem>,
+class ServicesCardAdapter(private var services: List<ServiceCardItem>,
                           private val onItemClick: (ServiceCardItem) -> Unit)
     : RecyclerView.Adapter<ServicesCardAdapter.ServiceHolder>() {
     override fun onCreateViewHolder(
@@ -24,10 +24,10 @@ class ServicesCardAdapter(private val services: List<ServiceCardItem>,
             binding.profileImageView.setImageResource(service.profileImageResId)
             binding.nameTextView.text = service.name
             binding.reusableChip.text = service.chipString
-            binding.numberOfReviews.text = service.numOfReview.toString()
-            binding.reviewDecimal.text = service.reviewDecimal
+//            binding.numberOfReviews.text = service.numOfReview.toString()
+//            binding.reviewDecimal.text = service.reviewDecimal
             binding.descriptionPreview.text = service.descriptionPreview
-            binding.servicePrice.text = service.servicePrice
+            binding.servicePrice.text = service.servicePrice.toString()
 //            binding.buttonKebabMenu.setOnClickListener()
             binding.root.setOnClickListener{onItemClick(service)}
 
@@ -42,4 +42,9 @@ class ServicesCardAdapter(private val services: List<ServiceCardItem>,
     }
 
     override fun getItemCount(): Int = services.size
+
+    fun updateData(newServices: List<ServiceCardItem>) {
+        services = newServices
+        notifyDataSetChanged() // Notify the adapter of the data change
+    }
 }
