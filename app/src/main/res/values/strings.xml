@@ -16,7 +16,7 @@
     <string name="service_name_placeholder">CS501 tutor</string>
     <string name="major">Major:</string>
     <string name="major_placeholder">Computer Science</string>
-    <string name="display">Show Major?</string>
+    <string name="display">Display Major?</string>
     <string name="service_type">*Service Type:</string>
     <string name="education">Education</string>
     <string name="chore">Chores</string>
@@ -25,5 +25,7 @@
     <string name="sports">Sports</string>
     <string name="moving">Moving</string>
     <string name="add_service">Add Service</string>
-    <string name="service_rate">*Service Rate:</string>
+    <string name="service_rate">*Service Rate(Whole number only):</string>
+    <string name="service_added_toast">Service added!</string>
+    <string name="service_add_fail_toast">Fail to add service. Please try again later.</string>
 </resources>

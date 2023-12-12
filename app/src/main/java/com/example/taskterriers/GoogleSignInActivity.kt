@@ -87,6 +87,14 @@ class GoogleSignInActivity : AppCompatActivity() {
                     ).show()
                 }else{
                     val intent: Intent = Intent(this,MainActivity::class.java)
+                    val sharedPreferences = getSharedPreferences("User", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.apply{
+                        putString("username", auth.currentUser?.displayName.toString())
+                        putString("uid", auth.currentUser?.uid.toString())
+                        putString("email", auth.currentUser?.email.toString())
+                        apply()
+                    }
                     startActivity(intent)
                     finish()
                 }
