@@ -90,7 +90,7 @@ class GoogleSignInActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }else{
-                    val intent: Intent = Intent(this,MainActivity::class.java)
+//                    val intent: Intent = Intent(this,MainActivity::class.java)
                     val sharedPreferences = getSharedPreferences("User", MODE_PRIVATE)
                     Log.d("before", "user not in db")
                     addUserToDb(auth.currentUser?.displayName!!, auth.currentUser?.uid!!, auth.currentUser?.email!!)
@@ -101,8 +101,8 @@ class GoogleSignInActivity : AppCompatActivity() {
                         putString("email", auth.currentUser?.email.toString())
                         apply()
                     }
-                    startActivity(intent)
-                    finish()
+//                    startActivity(intent)
+//                    finish()
                 }
 
             }else{
@@ -129,8 +129,11 @@ class GoogleSignInActivity : AppCompatActivity() {
                 val document = task.result
                 if (document != null && !document.exists()) {
                     Log.d("Firestore", "Document with uid $uid does not exist, creating new document.")
-                    firestore.collection("users").document(uid).set(newUserInfo)
+                    firestore.collection("users").document(uid).set(newUserInfo).addOnSuccessListener {
+                        naviatingLogic(true)
+                    }
                 } else {
+                    naviatingLogic(false)
                     Log.d("Firestore", "Document with uid $uid already exists.")
                 }
             } else {

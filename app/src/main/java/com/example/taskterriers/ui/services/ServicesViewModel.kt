@@ -16,7 +16,6 @@ import kotlin.random.Random
 
 class ServicesViewModel : ViewModel() {
 
-    val serviceTypes = arrayOf("Tutoring", "Move-in", "General", "Personal Care")
     private val dateFormat = SimpleDateFormat("MM-dd-yyyy hh:mm a", Locale.getDefault())
     private val calendar: Calendar = Calendar.getInstance()
     private var db = Firebase.firestore

@@ -27,10 +27,15 @@
         </activity>
         <activity
             android:name=".GoogleSignInActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false"
+            />
+        <activity
+            android:name=".NewUserActivity"
+            android:exported="false"
+            />
 
         <meta-data
             android:name="preloaded_fonts"
