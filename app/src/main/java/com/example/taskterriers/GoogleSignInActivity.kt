@@ -143,10 +143,11 @@ class GoogleSignInActivity : AppCompatActivity() {
     }
 
     fun naviatingLogic(newUser: Boolean){
+        var intent: Intent
         if(newUser){
-            val intent: Intent = Intent(this,MainActivity::class.java)
+            intent = Intent(this,NewUserActivity::class.java)
         }else{
-            val intent: Intent = Intent(this,MainActivity::class.java)
+            intent = Intent(this,MainActivity::class.java)
         }
         startActivity(intent)
         finish()

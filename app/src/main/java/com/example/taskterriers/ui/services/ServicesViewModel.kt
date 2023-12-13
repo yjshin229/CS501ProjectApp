@@ -32,7 +32,7 @@ class ServicesViewModel : ViewModel() {
                     id = document.id,
                     name = document["serviceName"].toString(),
                     chipString = document["serviceType"].toString(),
-                    descriptionPreview = document["serviceDescription"].toString().substring(0,100),
+                    descriptionPreview = if (document["serviceDescription"].toString().length > 100) document["serviceDescription"].toString().substring(0,100) else document["serviceDescription"].toString() ,
                     servicePrice = document["serviceRate"].toString().toInt(),
                     profileImageResId = R.drawable.ic_launcher_background
                 )
@@ -50,7 +50,7 @@ class ServicesViewModel : ViewModel() {
                     id = document.id,
                     name = document["serviceName"].toString(),
                     chipString = document["serviceType"].toString(),
-                    descriptionPreview = document["serviceDescription"].toString().substring(0,100),
+                    descriptionPreview = if (document["serviceDescription"].toString().length > 100) document["serviceDescription"].toString().substring(0,100) else document["serviceDescription"].toString() ,
                     servicePrice = document["serviceRate"].toString().toInt(),
                     profileImageResId = R.drawable.ic_launcher_background
                 )

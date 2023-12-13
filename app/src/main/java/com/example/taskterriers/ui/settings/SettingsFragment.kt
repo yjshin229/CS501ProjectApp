@@ -73,7 +73,7 @@ class SettingsFragment : Fragment(){
         binding.userNameTextView.text = userName
         binding.userEmailTextView.text = userEmail
         binding.majorTextView.text = major
-        binding.aboutTextView.text = about
+        binding.aboutTextView.text = about.trim()
     }
 
     override fun onDestroyView() {
