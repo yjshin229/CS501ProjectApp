@@ -22,6 +22,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentAddServiceBinding
 import com.example.taskterriers.databinding.FragmentServicesBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
@@ -66,7 +67,7 @@ class AddServiceFragment : Fragment() {
             "serviceType" to serviceType(),
             "userName" to (sharedPreferences?.getString("username", null) ?: ""),
             "uid" to (sharedPreferences?.getString("uid", null) ?: ""),
-//            "createdAt" to LocalDate.now()
+            "createdAt" to Timestamp.now()
         )
         firestore.collection("services").document().set(newServiceInfo).addOnSuccessListener {
             clearAllInputs()

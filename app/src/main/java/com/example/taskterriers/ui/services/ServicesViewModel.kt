@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.taskterriers.R
 import com.example.taskterriers.ui.requests.RequestItem
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -22,7 +23,7 @@ class ServicesViewModel : ViewModel() {
 
     private val _services = MutableLiveData<List<ServiceCardItem>>()
     val services: LiveData<List<ServiceCardItem>> = _services
-    private val firestoreRef = db.collection("services")
+    private val firestoreRef = db.collection("services").orderBy("createdAt", Query.Direction.DESCENDING)
 
     init {
         firestoreRef.get().addOnSuccessListener {documents ->
