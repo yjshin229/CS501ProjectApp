@@ -1,12 +1,15 @@
 package com.example.taskterriers.ui.settings
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentSettingsBinding
 import com.example.taskterriers.GoogleSignInActivity
@@ -50,10 +53,26 @@ class SettingsFragment : Fragment(){
             startActivity(intent)
             activity?.finish()
         }
+
+        setValues()
+
+        binding.editButton.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_settings_to_settingsEditFragment)
+        }
         val root: View = binding.root
         return root
     }
 
+    fun setValues() {
+        val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
+        val userName = (sharedPreferences?.getString("username", null) ?: "")
+        val userEmail = (sharedPreferences?.getString("email", null) ?: "")
+        val major = (sharedPreferences?.getString("major", null) ?: "")
+
+        binding.userNameTextView.text = userName
+        binding.userEmailTextView.text = userEmail
+        binding.majorTextView.text = major
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

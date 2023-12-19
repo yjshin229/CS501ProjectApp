@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,13 +40,10 @@ class ServicesFragment : Fragment() {
         binding.recyclerViewServices.layoutManager = LinearLayoutManager(context)
         val services =  servicesViewModel.services
         val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
-
+        val navController = findNavController()
 
         // Setting up the RecyclerView
-        val adapter = ServicesCardAdapter(emptyList()) { serviceItem ->
-            // Handle click event for each item
-            // For example, navigate to another fragment or activity
-        }
+        val adapter = ServicesCardAdapter(emptyList(), navController)
         binding.recyclerViewServices.adapter = adapter
 
         services.observe(viewLifecycleOwner) { servicesList ->

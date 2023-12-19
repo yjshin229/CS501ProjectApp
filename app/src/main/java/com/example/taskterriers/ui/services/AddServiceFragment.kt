@@ -22,8 +22,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentAddServiceBinding
 import com.example.taskterriers.databinding.FragmentServicesBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
 
 class AddServiceFragment : Fragment() {
     private var _binding: FragmentAddServiceBinding? = null
@@ -57,6 +59,7 @@ class AddServiceFragment : Fragment() {
 
     private fun addToFirestore(){
         val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
+
         val newServiceInfo = hashMapOf(
             "serviceName" to binding.serviceNameTextEdit.text.toString(),
             "serviceDescription" to binding.serviceDescriptionTextEdit.text.toString(),
@@ -65,6 +68,7 @@ class AddServiceFragment : Fragment() {
             "serviceType" to serviceType(),
             "userName" to (sharedPreferences?.getString("username", null) ?: ""),
             "uid" to (sharedPreferences?.getString("uid", null) ?: ""),
+            "createdAt" to Timestamp.now(),
         )
         firestore.collection("services").document().set(newServiceInfo).addOnSuccessListener {
             clearAllInputs()
