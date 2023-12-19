@@ -39,5 +39,10 @@
     <string name="save">Save</string>
     <string name="user_info_message">*You can always modify your information in the settings tab later.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="request_name">*Request Name</string>
+    <string name="request_name_placeholder">Need CS501 Tutor</string>
+    <string name="request_description_placeholder">Description of this request</string>
+    <string name="request_type">*Request Type:</string>
+    <string name="add_request">Add Request</string>
 
 </resources>

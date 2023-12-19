@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentRequestsBinding
 
 private const val TAG = "RequestsFragment"
@@ -31,6 +33,10 @@ class RequestsFragment : Fragment() {
             // For example, navigate to another fragment or activity
         }
         binding.recyclerviewRequests.adapter = adapter
+
+        binding.addRequestsButton.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_requests_to_requestAddFragment)
+        }
 
         return root
     }

@@ -30,7 +30,7 @@ import java.time.LocalDate
 class AddServiceFragment : Fragment() {
     private var _binding: FragmentAddServiceBinding? = null
     private val binding get() = _binding!!
-    val firestore = Firebase.firestore
+    private val firestore = Firebase.firestore
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
