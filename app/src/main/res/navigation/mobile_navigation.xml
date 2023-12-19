@@ -17,6 +17,13 @@
             app:exitAnim="@anim/slide_right"
             app:popEnterAnim="@anim/slide_left"
             app:popExitAnim="@anim/slide_right"/>
+        <action
+            android:id="@+id/action_navigation_requests_to_requestDetailFragment"
+            app:destination="@id/requestDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/slide_right"
+            app:popEnterAnim="@anim/slide_left"
+            app:popExitAnim="@anim/slide_right"/>
     </fragment>
 
     <fragment
@@ -89,6 +96,15 @@
         tools:layout="@layout/fragment_request_add" >
         <action
             android:id="@+id/action_requestAddFragment_to_navigation_requests"
+            app:destination="@id/navigation_requests" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestDetailFragment"
+        android:name="com.example.taskterriers.ui.requests.RequestDetailFragment"
+        android:label="fragment_request_detail"
+        tools:layout="@layout/fragment_request_detail" >
+        <action
+            android:id="@+id/action_requestDetailFragment_to_navigation_requests"
             app:destination="@id/navigation_requests" />
     </fragment>
 </navigation>

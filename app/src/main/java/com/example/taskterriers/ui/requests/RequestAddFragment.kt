@@ -62,7 +62,7 @@ class RequestAddFragment : Fragment() {
         val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
         val newRequestInfo = hashMapOf(
             "requestName" to binding.requestNameEditText.text.toString(),
-            "serviceDescription" to binding.requestDescriptionTextEdit.text.toString(),
+            "requestDescription" to binding.requestDescriptionTextEdit.text.toString(),
             "requestType" to requestType(),
             "userName" to (sharedPreferences?.getString("username", null) ?: ""),
             "uid" to (sharedPreferences?.getString("uid", null) ?: ""),

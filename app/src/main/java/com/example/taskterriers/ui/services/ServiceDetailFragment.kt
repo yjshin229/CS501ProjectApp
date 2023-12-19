@@ -25,8 +25,6 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
     private var db = Firebase.firestore
     private val firestoreRef = db.collection("services")
     private lateinit var googleMap: GoogleMap
-    private var serviceInfoReady = false
-    private var userInfoReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +60,6 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
                 }else{
                     binding.majorLinearView.visibility = View.GONE
                 }
-                serviceInfoReady = true
                 binding.loadingProgressBar.visibility = View.GONE
                 displayInformation(data["serviceName"].toString())
 

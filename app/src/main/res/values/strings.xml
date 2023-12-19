@@ -44,5 +44,7 @@
     <string name="request_description_placeholder">Description of this request</string>
     <string name="request_type">*Request Type:</string>
     <string name="add_request">Add Request</string>
+    <string name="comments">Comments</string>
+    <string name="send_message">Send Message</string>
 
 </resources>
