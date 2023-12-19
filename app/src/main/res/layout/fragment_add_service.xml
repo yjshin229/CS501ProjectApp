@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -193,6 +198,44 @@
             android:text="@string/other"
             android:theme="@style/CustomRadioButton"/>
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/locationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/service_location"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/locationSearchEditText"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Search Location"
+            android:inputType="textPersonName"/>
+
+        <Button
+            android:id="@+id/locationSearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textColor="@color/neutral_100"
+            android:onClick="searchLocation"
+            android:text="Search"/>
+    </LinearLayout>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        />
     <Button
         android:id="@+id/addServiceButton"
         android:layout_width="match_parent"
@@ -202,3 +245,4 @@
         android:enabled="false"
         />
 </LinearLayout>
+</ScrollView>

@@ -46,5 +46,6 @@
     <string name="add_request">Add Request</string>
     <string name="comments">Comments</string>
     <string name="send_message">Send Message</string>
+    <string name="service_location">*Location</string>
 
 </resources>
