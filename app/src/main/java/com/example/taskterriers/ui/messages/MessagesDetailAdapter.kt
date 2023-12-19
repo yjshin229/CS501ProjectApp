@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskterriers.databinding.ReceiveMessageBoxBinding
 import com.example.taskterriers.databinding.SentMessageBoxBinding
 import com.google.firebase.auth.FirebaseAuth
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MessagesDetailAdapter(
     private val messageList: ArrayList<Message>
@@ -30,8 +33,10 @@ class MessagesDetailAdapter(
         val currentMessage = messageList[position]
         if (holder is SentViewHolder) {
             holder.binding.sentTextMessage.text = currentMessage.message
+            holder.binding.sentTextDate.text = getDateTimeFormatted(currentMessage.createdAt.toDate())
         } else if (holder is ReceiveViewHolder) {
             holder.binding.receiveTextMessage.text = currentMessage.message
+            holder.binding.receiveTextDate.text =  getDateTimeFormatted(currentMessage.createdAt.toDate())
         }
     }
 
@@ -50,6 +55,10 @@ class MessagesDetailAdapter(
         messageList.clear()
         messageList.addAll(newMessages)
         notifyDataSetChanged()
+    }
+    private fun getDateTimeFormatted(date : Date?): String {
+        val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        return dateFormat.format(date)
     }
 
     class SentViewHolder(val binding: SentMessageBoxBinding): RecyclerView.ViewHolder(binding.root)

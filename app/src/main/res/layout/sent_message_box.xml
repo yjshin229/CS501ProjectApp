@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     >
     <RelativeLayout
+        android:id="@+id/sentTextBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -22,6 +23,16 @@
             android:textColor="@color/neutral_100"
             android:text="heleljeldjejfdksajfldjl;kafjkdjsa;fjkdsjfkdjska;fldjskll"/>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/sentTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/sentTextBox"
+        android:layout_toLeftOf="@id/sentTextBox"
+        android:layout_marginRight="5dp"
+        android:textSize="10dp"
+        />
 
 
 </RelativeLayout>

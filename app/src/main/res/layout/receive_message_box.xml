@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     >
     <RelativeLayout
+        android:id="@+id/receiveTextBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -17,10 +18,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:paddingVertical="2dp"
+            android:paddingVertical="5dp"
             android:maxWidth="200sp"
+            android:textColor="@color/bu_black"
             android:text="heleljeldjejfdksajfldjl;kafjkdjsa;fjkdsjfkdjska;fldjskll"/>
     </RelativeLayout>
+    <TextView
+        android:id="@+id/receiveTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/receiveTextBox"
+        android:layout_toEndOf="@id/receiveTextBox"
+        android:layout_marginLeft="5dp"
+        android:textSize="10dp"
 
+        />
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.taskterriers.ui.services
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,16 +27,13 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
     private var db = Firebase.firestore
     private val firestoreRef = db.collection("services")
-    private lateinit var serviceUserId: String
+    private var serviceUserId: String = ""
+    private lateinit var serviceUserName: String
     private lateinit var googleMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        (activity as? AppCompatActivity)?.supportActionBar?.title = serviceName
-//        binding.mapView.onCreate(savedInstanceState)
-//        binding.mapView.onResume()
-//        binding.mapView.getMapAsync(this)
     }
 
     override fun onCreateView(
@@ -46,6 +44,8 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
         _binding = FragmentServiceDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
         beforeLoadInformation()
+        val sharedPreferences = activity?.getSharedPreferences("User", AppCompatActivity.MODE_PRIVATE)
+        val uid = (sharedPreferences?.getString("uid", null) ?: "")
 
         val serviceId = arguments?.getString("serviceId")
         if (serviceId != null) {
@@ -65,18 +65,27 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
                 }
                 binding.loadingProgressBar.visibility = View.GONE
                 serviceUserId = data["uid"].toString()
+                serviceUserName = data["userName"].toString()
+                if(serviceUserId != uid){
+                    binding.sendMessageButton.visibility = View.VISIBLE
+                }
                 displayInformation(data["serviceName"].toString())
 
             }.addOnFailureListener {
                 // Hide the ProgressBar in case of failure
                 binding.loadingProgressBar.visibility = View.GONE
             }
+            Log.d("SERVICE serviceUserId", serviceUserId)
+            Log.d("SERVICE uid", uid)
+
+
         }
 
         binding.sendMessageButton.setOnClickListener {
             val actionId = R.id.action_serviceDetailFragment_to_messageDetailFragment
             val bundle = Bundle().apply {
-                putString("serviceUserId", serviceUserId)
+                putString("chatUserId", serviceUserId)
+                putString("chatUserName", serviceUserName)
             }
             findNavController().navigate(actionId, bundle)
         }
