@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:id="@+id/sentTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_sent_message_box"
+        >
+        <TextView
+            android:id="@+id/sentTextMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:maxWidth="200sp"
+            android:textColor="@color/neutral_100"
+            android:text="heleljeldjejfdksajfldjl;kafjkdjsa;fjkdsjfkdjska;fldjskll"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/sentTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/sentTextBox"
+        android:layout_toLeftOf="@id/sentTextBox"
+        android:layout_marginRight="5dp"
+        android:textSize="10dp"
+        />
+
+
+</RelativeLayout>
