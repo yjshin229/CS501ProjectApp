@@ -40,12 +40,10 @@ class SettingsEditFragment : Fragment() {
             val userName = (sharedPreferences?.getString("username", null) ?: "")
             val userEmail = (sharedPreferences?.getString("email", null) ?: "")
             val major = (sharedPreferences?.getString("major", null) ?: "")
-            val about = (sharedPreferences?.getString("about", null) ?: "")
 
             binding.userNameTextView.text = userName
             binding.userEmailTextView.text = userEmail
             binding.majorEditText.setText(major)
-            binding.aboutEditText.setText(about)
 
         binding.saveButton.setOnClickListener {
             updateValues()
@@ -60,12 +58,11 @@ class SettingsEditFragment : Fragment() {
 
         val editor = sharedPreferences?.edit()
         editor?.apply{
-            putString("about", binding.aboutEditText.text.toString())
             putString("major", binding.majorEditText.text.toString())
             apply()
         }
 
-        db.collection("users").document(uid).update("major", binding.majorEditText.text.toString(), "about",binding.aboutEditText.text.toString())
+        db.collection("users").document(uid).update("major", binding.majorEditText.text.toString())
     }
 
 }

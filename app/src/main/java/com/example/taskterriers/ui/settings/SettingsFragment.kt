@@ -68,12 +68,10 @@ class SettingsFragment : Fragment(){
         val userName = (sharedPreferences?.getString("username", null) ?: "")
         val userEmail = (sharedPreferences?.getString("email", null) ?: "")
         val major = (sharedPreferences?.getString("major", null) ?: "")
-        val about = (sharedPreferences?.getString("about", null) ?: "")
 
         binding.userNameTextView.text = userName
         binding.userEmailTextView.text = userEmail
         binding.majorTextView.text = major
-        binding.aboutTextView.text = about.trim()
     }
 
     override fun onDestroyView() {

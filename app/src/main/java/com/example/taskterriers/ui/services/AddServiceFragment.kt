@@ -59,6 +59,7 @@ class AddServiceFragment : Fragment() {
 
     private fun addToFirestore(){
         val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
+
         val newServiceInfo = hashMapOf(
             "serviceName" to binding.serviceNameTextEdit.text.toString(),
             "serviceDescription" to binding.serviceDescriptionTextEdit.text.toString(),
@@ -67,7 +68,7 @@ class AddServiceFragment : Fragment() {
             "serviceType" to serviceType(),
             "userName" to (sharedPreferences?.getString("username", null) ?: ""),
             "uid" to (sharedPreferences?.getString("uid", null) ?: ""),
-            "createdAt" to Timestamp.now()
+            "createdAt" to Timestamp.now(),
         )
         firestore.collection("services").document().set(newServiceInfo).addOnSuccessListener {
             clearAllInputs()
