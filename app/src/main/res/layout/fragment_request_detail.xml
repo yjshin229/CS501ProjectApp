@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="16dp"
+    android:orientation="vertical"
+    tools:context=".ui.requests.RequestDetailFragment">
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/requestNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="20dp"
+        android:textColor="@color/bu_black"
+        />
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Youngjin Shin"
+        />
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12/18/2023 fkldsaj;fl"
+        />
+
+    <EditText
+        android:id="@+id/requestDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical"
+        android:lines="10"
+        android:focusable="false"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:overScrollMode="always"
+        android:cursorVisible="false"
+        android:scrollbarStyle="insideInset"
+        android:background="@null"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:id="@+id/sendMessageButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/send_message"
+        android:layout_marginTop="12dp"
+        />
+
+</LinearLayout>
