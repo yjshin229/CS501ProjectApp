@@ -51,7 +51,15 @@
         android:id="@+id/navigation_messages"
         android:name="com.example.taskterriers.ui.messages.MessagesFragment"
         android:label="@string/title_messages"
-        tools:layout="@layout/fragment_messages" />
+        tools:layout="@layout/fragment_messages" >
+        <action
+            android:id="@+id/action_navigation_messages_to_messageDetailFragment"
+            app:destination="@id/messageDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/slide_right"
+            app:popEnterAnim="@anim/slide_left"
+            app:popExitAnim="@anim/slide_right"/>
+    </fragment>
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.taskterriers.ui.settings.SettingsFragment"
@@ -79,6 +87,14 @@
         <action
             android:id="@+id/action_serviceDetailFragment_to_navigation_services"
             app:destination="@id/navigation_services" />
+        <action
+            android:id="@+id/action_serviceDetailFragment_to_messageDetailFragment"
+            app:destination="@id/messageDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/slide_right"
+            app:popEnterAnim="@anim/slide_left"
+            app:popExitAnim="@anim/slide_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/settingsEditFragment"
@@ -106,5 +122,24 @@
         <action
             android:id="@+id/action_requestDetailFragment_to_navigation_requests"
             app:destination="@id/navigation_requests" />
+        <action
+            android:id="@+id/action_requestDetailFragment_to_messageDetailFragment"
+            app:destination="@id/messageDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/slide_right"
+            app:popEnterAnim="@anim/slide_left"
+            app:popExitAnim="@anim/slide_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/messageDetailFragment"
+        android:name="com.example.taskterriers.ui.messages.MessageDetailFragment"
+        android:label="fragment_message_detail"
+        tools:layout="@layout/fragment_message_detail" >
+        <action
+            android:id="@+id/action_messageDetailFragment_to_requestDetailFragment"
+            app:destination="@id/requestDetailFragment" />
+        <action
+            android:id="@+id/action_messageDetailFragment_to_navigation_messages"
+            app:destination="@id/navigation_messages" />
     </fragment>
 </navigation>

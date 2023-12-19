@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.taskterriers.R
 import com.example.taskterriers.databinding.ChatCardBinding
 
 
@@ -27,13 +28,13 @@ class ChatCardAdapter(
             binding.nameTextView.text = chat.chatName
             binding.dateTextView.text = chat.updatedAt
 //            binding.buttonKebabMenu.setOnClickListener()
-//            binding.root.setOnClickListener{
-//                val actionId = R.id.action_navigation_requests_to_requestDetailFragment
-//                val bundle = Bundle().apply {
-//                    putString("requestId", request.id)
-//                }
-//                navController.navigate(actionId, bundle)
-//            }
+            binding.root.setOnClickListener{
+                val actionId = R.id.action_navigation_messages_to_messageDetailFragment
+                val bundle = Bundle().apply {
+                    putString("chatId", chat.id)
+                }
+                navController.navigate(actionId, bundle)
+            }
 
         }
     }

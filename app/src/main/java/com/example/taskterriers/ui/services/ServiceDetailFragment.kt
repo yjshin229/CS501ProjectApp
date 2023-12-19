@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import com.example.taskterriers.R
 import com.example.taskterriers.databinding.FragmentServiceDetailBinding
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -24,6 +26,7 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
     private var db = Firebase.firestore
     private val firestoreRef = db.collection("services")
+    private lateinit var serviceUserId: String
     private lateinit var googleMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,12 +64,21 @@ class ServiceDetailFragment : Fragment(), OnMapReadyCallback {
                     binding.majorLinearView.visibility = View.GONE
                 }
                 binding.loadingProgressBar.visibility = View.GONE
+                serviceUserId = data["uid"].toString()
                 displayInformation(data["serviceName"].toString())
 
             }.addOnFailureListener {
                 // Hide the ProgressBar in case of failure
                 binding.loadingProgressBar.visibility = View.GONE
             }
+        }
+
+        binding.sendMessageButton.setOnClickListener {
+            val actionId = R.id.action_serviceDetailFragment_to_messageDetailFragment
+            val bundle = Bundle().apply {
+                putString("serviceUserId", serviceUserId)
+            }
+            findNavController().navigate(actionId, bundle)
         }
 
         return root
