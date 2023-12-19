@@ -4,4 +4,5 @@ data class ChatCardItem(
     val id: String,
     val chatName: String,
     val updatedAt: String,
+    val chatUserId: String,
 )

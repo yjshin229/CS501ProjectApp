@@ -27,11 +27,12 @@ class ChatCardAdapter(
         holder.apply {
             binding.nameTextView.text = chat.chatName
             binding.dateTextView.text = chat.updatedAt
-//            binding.buttonKebabMenu.setOnClickListener()
             binding.root.setOnClickListener{
                 val actionId = R.id.action_navigation_messages_to_messageDetailFragment
                 val bundle = Bundle().apply {
                     putString("chatId", chat.id)
+                    putString("chatUserName", chat.chatName)
+                    putString("chatUserId", chat.chatUserId)
                 }
                 navController.navigate(actionId, bundle)
             }

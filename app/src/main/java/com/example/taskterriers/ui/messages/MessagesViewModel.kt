@@ -1,5 +1,6 @@
 package com.example.taskterriers.ui.messages
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +11,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -26,12 +32,16 @@ class MessagesViewModel : ViewModel() {
         firestoreRef.get().addOnSuccessListener {documents ->
             val tempList = mutableListOf<ChatCardItem>()
             for(document in documents){
+                Log.d("messagesFirestore", document.id)
                 val usersList = document["users"] as? List<String> ?: listOf()
+                val userNamesList =  document["userNames"] as? List<String> ?: listOf()
                 val otherUser = getOtherUser(usersList, myUid)
+                val userNameIndex = usersList.indexOf(otherUser)
                 val chat = ChatCardItem(
                     id = document.id,
                     updatedAt = getCurrentDateTimeFormatted(document.getTimestamp("updatedAt")?.toDate()),
-                    chatName = otherUser,
+                    chatName = userNamesList[userNameIndex],
+                    chatUserId = otherUser
                 )
                 tempList.add(chat)
             }
@@ -45,12 +55,13 @@ class MessagesViewModel : ViewModel() {
             for (document in documents) {
                 val usersList = document["users"] as? List<String> ?: listOf()
                 val otherUser = getOtherUser(usersList, myUid)
-                val request = ChatCardItem(
+                val chat = ChatCardItem(
                     id = document.id,
                     updatedAt = getCurrentDateTimeFormatted(document.getTimestamp("updatedAt")?.toDate()),
-                    chatName = otherUser,
+                    chatName = getUserName(otherUser),
+                    chatUserId = otherUser,
                 )
-                tempList.add(request)
+                tempList.add(chat)
             }
             _chats.value = tempList
         }
@@ -62,5 +73,14 @@ class MessagesViewModel : ViewModel() {
 
     private fun getOtherUser(users: List<String>, myUid: String): String {
         return if (users[0] == myUid) users[1] else users[0]
+    }
+
+    private fun getUserName(userId: String): String{
+        val userRef =  db.collection("users")
+        var userName: String = ""
+        userRef.document(userId).get().addOnSuccessListener {data ->
+            userName = data["userName"].toString()
+        }
+        return userName
     }
 }

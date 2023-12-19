@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskterriers.databinding.FragmentMessagesBinding
 
 class MessagesFragment : Fragment() {
@@ -29,6 +30,8 @@ class MessagesFragment : Fragment() {
 
         _binding = FragmentMessagesBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.recyclerViewChats.layoutManager = LinearLayoutManager(context)
 
         val chats =  messagesViewModel.chats
         val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)

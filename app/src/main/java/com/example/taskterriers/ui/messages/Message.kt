@@ -1,13 +1,9 @@
 package com.example.taskterriers.ui.messages
 
-class Message {
-    var message: String?= null
-    var senderId: String?= null
+import com.google.firebase.Timestamp
 
-    constructor(){}
-
-    constructor(message: String?,senderId: String?){
-        this.message = message
-        this.senderId = senderId
-    }
-}
+data class Message(
+    val createdAt: Timestamp = Timestamp.now(),
+    val sender: String = "",
+    val message: String = ""
+)
