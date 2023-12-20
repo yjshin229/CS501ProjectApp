@@ -54,10 +54,6 @@ class MessageDetailFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = chatUserName
         if (chatId != null ) {
 
-            binding.sendMessageButton.setOnClickListener {
-                sendMessage(chatId)
-            }
-
             firestoreChatRef.document(chatId).collection("messages").orderBy("createdAt")
                 .addSnapshotListener { snapshot, e ->
                     if (e != null) {
@@ -83,11 +79,18 @@ class MessageDetailFragment : Fragment() {
 
                 }
 
+                override fun onNoChatIdFound() {
+
+                }
+
                 override fun onError(e: Exception) {
                     Log.e("MessageDetailFragment", "Error fetching chat ID", e)
                     // Handle error
                 }
             })
+        }
+        binding.sendMessageButton.setOnClickListener {
+            sendMessage(chatUserId!!, chatUserName!!)
         }
 
         return root
@@ -95,6 +98,7 @@ class MessageDetailFragment : Fragment() {
 
     interface ChatIdCallback {
         fun onChatIdFound(chatId: String)
+        fun onNoChatIdFound()
         fun onError(e: Exception)
     }
     private fun checkMessageHistory(uid: String, callback: ChatIdCallback): String {
@@ -114,6 +118,8 @@ class MessageDetailFragment : Fragment() {
                 val commonDocumentIds = firstResultSet.intersect(secondResultSet)
                 if (commonDocumentIds.isNotEmpty()) {
                     callback.onChatIdFound(commonDocumentIds.first()) // Pass the first common ID
+                }else{
+                    callback.onNoChatIdFound()
                 }
                 for (id in commonDocumentIds) {
                     documentId = id
@@ -143,8 +149,49 @@ class MessageDetailFragment : Fragment() {
                 updateRecyclerView(messagesList)
             }
     }
+    private fun sendMessage(chatUserId: String, chatUserName: String) {
+        checkMessageHistory(chatUserId, object : ChatIdCallback {
+            override fun onChatIdFound(chatId: String) {
+                // Chat room exists, send message to this chatId
+                sendToExistingChatRoom(chatId)
+            }
 
-    private fun sendMessage(chatId: String){
+            override fun onError(e: Exception) {
+                // Handle error (e.g., show a message to the user)
+            }
+
+            override fun onNoChatIdFound() {
+                // No existing chat room, create a new one
+                createNewChatRoom(chatUserId, chatUserName) { newChatId ->
+                    sendToExistingChatRoom(newChatId)
+                }
+            }
+        })
+    }
+
+    private fun createNewChatRoom(userId: String, userName: String, callback: (String) -> Unit) {
+        // Logic to create a new chat room
+        val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
+        val myUid = (sharedPreferences?.getString("uid", null) ?: "")
+        val myUserName = (sharedPreferences?.getString("userName", null) ?: "")
+        val newChatroomInfo = hashMapOf(
+            "users" to listOf(myUid, userId),
+            "userNames" to listOf(myUserName, userName),
+            "createdAt" to Timestamp.now(),
+            "updatedAt" to Timestamp.now()
+        )
+        val newChatroomRef = firestoreChatRef.document()
+        newChatroomRef.set(newChatroomInfo).addOnSuccessListener {
+            val newChatId = newChatroomRef.id // Replace with actual chat ID generation logic
+            callback(newChatId)
+        }.addOnFailureListener { e ->
+            // Handle any failure in setting the document
+            Log.e("Firestore", "Error setting new chatroom: ", e)
+        }
+
+    }
+
+    private fun sendToExistingChatRoom(chatId: String){
         val sharedPreferences = activity?.getSharedPreferences("User", Context.MODE_PRIVATE)
         val currentTime = Timestamp.now()
         val newMessageInfo = hashMapOf(
@@ -156,7 +203,6 @@ class MessageDetailFragment : Fragment() {
             binding.messageInputEditText.text.clear()
         }
         firestoreChatRef.document(chatId).update("updatedAt", currentTime)
-
     }
     private fun updateRecyclerView(messages: ArrayList<Message>) {
         val adapter = binding.chatRecyclerView.adapter as? MessagesDetailAdapter

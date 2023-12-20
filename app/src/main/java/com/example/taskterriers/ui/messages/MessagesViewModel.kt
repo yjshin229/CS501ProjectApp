@@ -26,13 +26,14 @@ class MessagesViewModel : ViewModel() {
 
     private val _chats = MutableLiveData<List<ChatCardItem>>()
     val chats: LiveData<List<ChatCardItem>> = _chats
-    private val firestoreRef = db.collection("chats").orderBy("updatedAt", Query.Direction.DESCENDING)
+    private val firestoreRef = db.collection("chats")
     private val myUid = FirebaseAuth.getInstance().currentUser!!.uid
+
     init {
-        firestoreRef.get().addOnSuccessListener {documents ->
+        Log.d("CUrrent UID", myUid)
+        firestoreRef.whereArrayContains("users", myUid).get().addOnSuccessListener {documents ->
             val tempList = mutableListOf<ChatCardItem>()
             for(document in documents){
-                Log.d("messagesFirestore", document.id)
                 val usersList = document["users"] as? List<String> ?: listOf()
                 val userNamesList =  document["userNames"] as? List<String> ?: listOf()
                 val otherUser = getOtherUser(usersList, myUid)
@@ -50,7 +51,7 @@ class MessagesViewModel : ViewModel() {
     }
 
     fun refreshData() {
-        firestoreRef.get().addOnSuccessListener { documents ->
+        firestoreRef.whereArrayContains("users", myUid).get().addOnSuccessListener { documents ->
             val tempList = mutableListOf<ChatCardItem>()
             for (document in documents) {
                 val usersList = document["users"] as? List<String> ?: listOf()
